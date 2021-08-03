@@ -1,180 +1,82 @@
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ASCII BIT TRANSLATION APP">
+    <meta name="keywords" content="ascii, bit, translation ascii">
+    <meta name="author" content="NeoCode">
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.png" type="image/png">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Styles -->
+    <link rel="stylesheet" href="main.css">
+
     <title>ASCII BIT TRANSLATION</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        h1 {
-            color: #A00000;
-            padding-top: 15px;
-            font-size: 100%;
-            font-weight: bold;
-        }
-        .field {
-            width: 100%;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            padding: 5px;
-        }
-        .field:focus {
-            outline: none;
-        }
-        table th {
-            color: #502000;
-        }
-        table th, td {
-            padding: 8px;
-            border: 1px solid #ccc;
-        }
-        table {
-            border-collapse: collapse;
-        }
-    </style>
 </head>
-<!-- https://tryphp.w3schools.com/showphp.php?filename=demo_form_validation_complete -->
+
 <body>
-    <main>
+    <main class="container">
+
         <section>
             <h1>ASCII BIT TRANSLATION</h1>
-            <p>Introduzca hasta cinco caracteres alfanuméricos en el campo caracteres y,<br>
-                a continuación, haga clic en el botón mostrarme para ver la traducción de bits ASCII.</p>
+            <p>Introduzca hasta cinco caracteres alfanuméricos en el campo caracteres y, a continuación, haga clic en el
+                botón mostrarme para ver la traducción de bits ASCII.</p>
             <form action="#" method="POST">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Caracteres</th>
-                            <th>Traducción de bits ASCII</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <!-- https://html.spec.whatwg.org/multipage/input.html#attr-input-pattern -->
-                                <input type="text" name="text" id="text" class="field" value=""
-                                    maxlength="5"
-                                    pattern="[0-9A-Za-z]{1,5}"
-                                    title="Solo cinco caracteres alfanuméricos son permitidos"
-                                    required
-                                    autocomplete="off"
-                                    spellcheck="false"
-                                    autocapitalize="off"
-                                >
-                            </td>
-                            <td style="width: 400px;text-align: center;" id="demo"></td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td>
-                                <button type="submit">Mostrarme</button>
-                            </td>
-                            <td>
-                                <button type="reset" onclick="document.getElementById('demo').innerText = '';">Limpiar</button>
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
+                <div class="table-responsive-md">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="text-center">
+                                <th>Caracteres</th>
+                                <th>Traducción de bits ASCII</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <!-- https://html.spec.whatwg.org/multipage/input.html#attr-input-pattern -->
+                                    <input type="text" name="text" id="text" class="form-control" value="" maxlength="5"
+                                        pattern="[0-9A-Za-z]{1,5}"
+                                        title="Solo cinco caracteres alfanuméricos son permitidos" required
+                                        autocomplete="off" spellcheck="false" autocapitalize="off">
+                                </td>
+                                <td id="output" class="text-center"></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    <button type="submit" class="btn btn-dark">Mostrarme</button>
+                                </td>
+                                <td>
+                                    <button type="reset" class="btn btn-secondary" onclick="document.getElementById('output').innerText = '';">Limpiar</button>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </form>
         </section>
+
     </main>
-    <footer>
+
+    <div class="container">
         <p>Referencias:</p>
         <ul>
             <li><a href="https://www.ascii-code.com/" target="_blank">https://www.ascii-code.com/</a></li>
-            <li><a href="https://www.man7.org/linux/man-pages/man7/ascii.7.html" target="_blank">https://www.man7.org/linux/man-pages/man7/ascii.7.html</a></li>
-            <!-- <li><a href="https://www.php.net/manual/es/function.ord" target="_blank">https://www.php.net/manual/es/function.ord</a></li> -->
-            <!-- <li><a href="https://www.youtube.com/watch?v=IkFE5w4B7_Q" target="_blank">https://www.youtube.com/watch?v=IkFE5w4B7_Q</a></li> -->
+            <li><a href="https://www.man7.org/linux/man-pages/man7/ascii.7.html"
+                    target="_blank">https://www.man7.org/linux/man-pages/man7/ascii.7.html</a></li>
         </ul>
+    </div>
+    <footer class="mt-auto py-3 text-center">
+        <p class="small text-muted">Copyright © 2021 | Powered by Julio Cesar</p>
     </footer>
-    
-    <script>
-        'use strict';
-        const d = document;
 
-        const inputEl = d.querySelector("#text");
-        const formEl = d.forms[0];
-
-        d.addEventListener("DOMContentLoaded", function(){
-            if (inputEl) {
-                inputEl.oninput = function(e) { return trimmed(this, e); }
-            }
-            if (formEl) {
-                formEl.onsubmit = function(e) { return init(this, e); }
-            }
-        });
-
-        function trimmed(el, event) {
-            el.value = el.value.trim();
-        }
-
-        function init(el, event) {
-            event.preventDefault();
-            let error = null;
-            let text = null;
-            if (inputEl) {
-                text = inputEl.value.trim();
-            }
-            if (!text.length) {
-                error = 'Completa este campo.';
-            }
-            else if ( !/^[a-zA-Z0-9]{1,5}$/.test(text) ) {
-                error = 'Solo cinco caracteres alfanuméricos son permitidos.';
-            }
-            
-            if(!error) {
-                let result = "";
-                const n = text.length;
-                for (let i = 0; i < n; i++) {
-                    const decimal = text[i].charCodeAt(0);
-                    result += decToBin(decimal);
-                    if (i < n - 1) {
-                        result += " ";
-                    }
-                }
-                d.querySelector("#demo").innerText = result;
-            } else {
-                // console.log("Si hay errores");
-            }
-        }
-
-        function decToBin(n) {
-            let power = 1;
-            
-            n = parseInt( n );
-            
-            while (power <= n / 2) {
-                power = power * 2;
-            }
-            
-            let bin = "";
-            
-            // check for presence of powers of 2 in n, from largest to smallest
-            while (power > 0) {
-                // power is not present in n
-                if (n < power) {
-                    bin += "0";
-                }
-                
-                // power is present in n, so subtract power from n
-                else {
-                    bin += "1";
-                    n = n - power;
-                }
-                
-                // next smallest power of 2
-                power = Math.trunc( power / 2 );
-            }
-            
-            return bin.padStart(8, '0');
-        }
-    </script>
+    <script src="main.js"></script>
 </body>
+
 </html>
