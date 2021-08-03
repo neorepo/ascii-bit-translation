@@ -46,7 +46,7 @@
             <h1>ASCII BIT TRANSLATION</h1>
             <p>Introduzca hasta cinco caracteres alfanuméricos en el campo caracteres y,<br>
                 a continuación, haga clic en el botón mostrarme para ver la traducción de bits ASCII.</p>
-            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+            <form action="/" method="POST">
                 <table>
                     <thead>
                         <tr>
@@ -58,7 +58,7 @@
                         <tr>
                             <td>
                                 <!-- https://html.spec.whatwg.org/multipage/input.html#attr-input-pattern -->
-                                <input type="text" name="text" id="text" class="field" value="<?php echo htmlspecialchars($text); ?>"
+                                <input type="text" name="text" id="text" class="field" value=""
                                     maxlength="5"
                                     pattern="[0-9A-Za-z]{1,5}"
                                     title="Solo cinco caracteres alfanuméricos son permitidos"
@@ -68,7 +68,7 @@
                                     autocapitalize="off"
                                 >
                             </td>
-                            <td style="width: 400px;text-align: center;"><?php echo htmlspecialchars($bin); ?></td>
+                            <td style="width: 400px;text-align: center;"></td>
                         </tr>
                     </tbody>
                     <tfoot>
