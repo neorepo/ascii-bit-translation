@@ -7,15 +7,26 @@ const formEl = d.forms[0];
 
 d.addEventListener("DOMContentLoaded", function () {
     if (inputEl) {
-        inputEl.oninput = function (e) { return trimmed(this, e); }
+        // En la entrada de datos, quitamos espacios de izquierda y derecha del string
+        inputEl.oninput = function (e) { return this.value.trim(); }
     }
     if (formEl) {
         formEl.onsubmit = function (e) { return init(this, e); }
     }
+    if (formEl) {
+        formEl.onreset = function (e) {
+            d.querySelector('#output').innerText = '';
+            inputEl.focus();
+        }
+    }
 });
 
-function trimmed(el, event) {
-    el.value = el.value.trim();
+function escape(el) {
+    return entitiesHtml(el.value.trim());
+}
+
+function entitiesHtml(string) {
+    return String(string).replace(/&/g, '&amp;').replace(/>/g, '&gt;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 }
 
 function init(el, event) {
@@ -23,10 +34,10 @@ function init(el, event) {
     let error = null;
     let text = null;
     if (inputEl) {
-        text = inputEl.value.trim();
+        text = escape(inputEl);
     }
     if (!text.length) {
-        error = 'Completa este campo.';
+        error = 'Completa el campo caracteres.'; // carácter
     }
     else if (!/^[a-zA-Z0-9]{1,5}$/.test(text)) {
         error = 'Solo cinco caracteres alfanuméricos son permitidos.';
@@ -44,7 +55,7 @@ function init(el, event) {
         }
         d.querySelector("#output").innerText = result;
     } else {
-        // console.log("");
+        alert(error);
     }
 }
 
