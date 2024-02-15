@@ -39,7 +39,7 @@ function init(el, event) {
     if (!text.length) {
         error = 'Completa el campo caracteres.'; // carácter
     }
-    else if (!/^[a-zA-Z0-9]{1,5}$/.test(text)) {
+    else if (!/^[ñÑa-zA-Z0-9áéíóúÁÉÍÓÚ]{1,5}$/.test(text)) {
         error = 'Solo cinco caracteres alfanuméricos son permitidos.';
     }
 
